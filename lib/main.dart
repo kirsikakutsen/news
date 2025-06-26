@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:news/presentation/details/news_details.dart';
+import 'package:news/presentation/feed/news_feed.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      home: const MainPage(title: 'Flutter Demo Home Page'),
+      title: 'News',
+      routes: {
+        '/': (context) => NewsFeed(),
+        '/newsDetails': (context) => NewsDetails(),
+      },
     );
   }
 }
