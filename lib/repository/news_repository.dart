@@ -6,8 +6,7 @@ import 'package:news/models/news_model.dart';
 
 Future<List<NewsResponse>> fetchNews(String locale) async {
   final apiKey = dotenv.env['API_KEY'];
-  final baseUrl = dotenv.env['BASE_URL'];
-  final uriString = "$baseUrl/api/1/latest?apikey=$apiKey&language=$locale";
+  final uriString = "https://newsdata.io/api/1/latest?apikey=$apiKey&language=$locale";
   final uri = Uri.parse(uriString);
 
   final response = await https.get(
